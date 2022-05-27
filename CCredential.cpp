@@ -55,16 +55,14 @@ HRESULT CCredential::initialize(CREDENTIAL_PROVIDER_USAGE_SCENARIO cpus,
 		pcpUser->GetStringValue(PKEY_Identity_UserName, &userName);
 		if (userName)
 		{
-			// KB 요구사항. 사용자 계정(사번) 대문자 처리.
-			this->userName = _wcsupr(userName);
+			this->userName = userName;
 			CoTaskMemFree(userName);
 		}
 
 		pcpUser->GetStringValue(PKEY_Identity_QualifiedUserName, &qualifiedUserName);
 		if (qualifiedUserName != nullptr)
-		{
-			// KB 요구사항. 사용자 계정(사번) 대문자 처리.
-			this->qualifiedUserName = _wcsupr(qualifiedUserName);
+		{			
+			this->qualifiedUserName = qualifiedUserName;
 			CoTaskMemFree(qualifiedUserName);
 		}
 
